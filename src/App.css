@@ -3,3 +3,9 @@
   height: 100px;
   width: 100px;
 }
+
+.squares {
+  display: flex;
+  flex-wrap: wrap;
+  width: 315px;
+}
