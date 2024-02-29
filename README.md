@@ -75,7 +75,18 @@ There is an interesting approach to the [Tic Tac Toe win condition in React](htt
 **Acceptance Criteria**
 
 - Can see a notice displaying which player won
+  --set winning combos
+  -- set winners
+  -- function that looks for the winning combinations
+  --display a alert saying who won.
+
+
+
+
+
 - Game play cannot continue after the game has been won
+
+
 - Can click on a restart button that will clear the game board
 
 **Story 3**: In order to play tic tac toe, as the user of the application, I should not be able to continue playing the game if all the squares are marked. If neither player wins and all the squares are marked, I should see a notification for a "cats game."

@@ -5,6 +5,13 @@ import './App.css'
 const App = () => {
   const [squares, setSquares] = useState(Array(9).fill(null))
 const [turn, setTurn] = useState("X")
+const [winner, setWinner] =useState()
+
+
+const winningCombos = [[0, 1, 2], [3, 4, 5], [6, 7, 8], [0, 3, 6], [1, 4, 7], [2, 5, 8], [0, 4, 8], [2, 4, 6]]
+
+
+
 
 //we need player1s click to be an x. next click after must be player2 with o
 const handleGamePlay = (currentSquare) =>{
@@ -18,11 +25,12 @@ const handleGamePlay = (currentSquare) =>{
     array[currentSquare] = "O"
     setTurn("X")
   }
+  checkForWinningCombo(array)
   setSquares(array)
 
 }
-  
-  
+  const checkForWinningCombo = (array) => {
+  }
   return (
     <>
       <h1>Tic Tac Toe</h1>
