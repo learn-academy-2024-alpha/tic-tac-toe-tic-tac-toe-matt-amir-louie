@@ -6,9 +6,10 @@ const App = () => {
 	const [squares, setSquares] = useState(Array(9).fill(null));
 	const [turn, setTurn] = useState("X");
 	const [winner, setWinner] = useState(null);
-
+	const [checkForWinner, setCheckForWinner] = useState(false);
+	
 	const winningCombos = [
-	  [0, 1, 2],
+	    [0, 1, 2],
 		[3, 4, 5],
 		[6, 7, 8],
 		[0, 3, 6],
@@ -24,31 +25,27 @@ const App = () => {
 			if (squares[a] === "X" && 
           squares[b] === "X" && 
           squares[c] === "X") 
-          {
-				setWinner("X");
+          {			  
+				//setWinner("X");
+				alert(`X is the winner`)
+				restartButt()
+
 			} else if (
 				squares[a] === "O" &&
 				squares[b] === "O" &&
 				squares[c] === "O")
-         {
-				setWinner("O");
+         {			 
+				//setWinner("O");
+				alert(`O is the winner`)
+				restartButt()
 			} 
 		});
 	};
 	console.log(winner);
-
-	// if(array[0] === array[1] && array[1] === array[2]){
-	//   console.log("checkwinner",array);
-	//   console.log(winner, "winner");
-	//   setWinner(array[0])
-
-	//   }
-	// }
-	//we need player1s click to be an x. next click after must be player2 with o
+	
 	const handleGamePlay = (currentSquare) => {
 		if (squares[currentSquare] !== null) return;
 
-		// let array = [...squares];
 		if (turn === "X") {
 			squares[currentSquare] = "X";
 			setTurn("O");
@@ -58,10 +55,34 @@ const App = () => {
 		}
 		setSquares(squares);
 		checkForWinningCombo();
-
+		checkForWin();
 	};
 
-	// if winning combos includes x
+	const checkForWin = () => {
+		//check the use state winner 
+		//if winner contains value
+		//we need it to update our check for win use state
+		if (winner !== null){
+			setTurn()
+			setCheckForWinner(true)
+			//alert(`${winner} is the winner`)
+			 document.querySelector(".squares").removeAttribute("onClick")}
+			// ("squares").addClass("disabledbutton");
+	}
+	const restartButt = () => {
+		setSquares(Array(9).fill(null))
+		setTurn("X")
+		setWinner(null)
+		setCheckForWinner(false)
+	}
+			
+			
+			
+		
+
+
+
+
 
 	return (
 		<>
@@ -74,9 +95,11 @@ const App = () => {
 							square={square}
 							index={index}
 							handleGamePlay={handleGamePlay}
+							checkForWin={checkForWin}
 						/>
-					);
-				})}
+						);
+					})}
+					<button onClick={restartButt}>Restart Game</button>
 			</div>
 		</>
 	);
