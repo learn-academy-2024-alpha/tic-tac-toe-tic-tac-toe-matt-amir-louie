@@ -9,3 +9,8 @@
   flex-wrap: wrap;
   width: 315px;
 }
+
+.disabledbutton {
+  pointer-events: none;
+  opacity: 0.4;
+}

@@ -1,14 +1,18 @@
 import React from 'react'
 
-const Square = ({ square, index, handleGamePlay }) => {  
+const Square = ({ square, index, handleGamePlay, checkForWinner}) => {  
   const handleClick = () =>{
-    handleGamePlay(index)
-
+    if (checkForWinner === true){
+      document.querySelector(".squares").removeAttribute("onClick")
+    }else{
+      handleGamePlay(index)
+          
+    }
   }
 
 
   return (
-    <div className="square" onClick={handleClick}>{square}</div>
+    <div id = "square" className="square" onClick={handleClick}>{square}</div>
   )
 }
 export default Square
